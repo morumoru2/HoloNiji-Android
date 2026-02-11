@@ -1,0 +1,158 @@
+/* ホロライブ・にじさんじ統合アプリ - プレミアムスタイルシート */
+
+/* 全体設定 */
+QMainWindow, QWidget {
+    background-color: #1a1a2e;
+    color: #eaeaea;
+    font-family: "Yu Gothic UI", "Meiryo", sans-serif;
+    font-size: 13px;
+}
+
+/* タブウィジェット */
+QTabWidget::pane {
+    border: 1px solid #3a3a5e;
+    border-radius: 8px;
+    background-color: #16213e;
+    padding: 5px;
+}
+
+QTabBar::tab {
+    background-color: #0f3460;
+    color: #eaeaea;
+    padding: 10px 20px;
+    margin-right: 2px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+QTabBar::tab:selected {
+    background-color: #e94560;
+    color: white;
+    font-weight: bold;
+}
+
+QTabBar::tab:hover:!selected {
+    background-color: #1a508b;
+}
+
+/* ボタン */
+QPushButton {
+    background-color: #0f3460;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #1a508b;
+}
+
+QPushButton:pressed {
+    background-color: #e94560;
+}
+
+QPushButton#favoriteBtn {
+    background-color: transparent;
+    font-size: 18px;
+}
+
+/* 入力フィールド */
+QLineEdit {
+    background-color: #16213e;
+    color: #eaeaea;
+    border: 2px solid #3a3a5e;
+    border-radius: 6px;
+    padding: 8px 12px;
+}
+
+QLineEdit:focus {
+    border-color: #e94560;
+}
+
+/* リストウィジェット */
+QListWidget {
+    background-color: #16213e;
+    border: 1px solid #3a3a5e;
+    border-radius: 8px;
+    padding: 5px;
+}
+
+QListWidget::item {
+    background-color: #1a1a2e;
+    border-radius: 6px;
+    margin: 3px;
+    padding: 8px;
+}
+
+QListWidget::item:hover {
+    background-color: #0f3460;
+}
+
+/* スクロールエリア */
+QScrollArea {
+    background-color: transparent;
+    border: none;
+}
+
+/* グループボックス */
+QGroupBox {
+    font-weight: bold;
+    color: #e94560;
+    border: 2px solid #3a3a5e;
+    border-radius: 8px;
+    margin-top: 10px;
+    padding-top: 15px;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 15px;
+    padding: 0 5px;
+}
+
+/* コンボボックス */
+QComboBox {
+    background-color: #0f3460;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 12px;
+}
+
+QComboBox:hover {
+    background-color: #1a508b;
+}
+
+QComboBox::drop-down {
+    border: none;
+}
+
+/* フレーム（カード） */
+QFrame {
+    background-color: #16213e;
+    border-radius: 10px;
+}
+
+/* ステータスバー */
+QStatusBar {
+    background-color: #0f3460;
+    color: #eaeaea;
+}
+
+/* ラベル */
+QLabel {
+    color: #eaeaea;
+}
+
+QLabel#headerLabel {
+    font-size: 16px;
+    font-weight: bold;
+    color: #e94560;
+}
+
+QLabel#subLabel {
+    color: #888;
+    font-size: 11px;
+}

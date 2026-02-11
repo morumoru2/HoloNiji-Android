@@ -1,0 +1,148 @@
+#:kivy 2.0.0
+
+#:import ButtonBehavior kivy.uix.behaviors.ButtonBehavior
+
+<MemberItem@ButtonBehavior+BoxLayout>:
+    text: ''
+    secondary_text: ''
+    url: ''
+    orientation: 'vertical'
+    size_hint_y: None
+    height: dp(65)
+    padding: dp(12)
+    on_release: app.open_link(self.url)
+    canvas.before:
+        Color:
+            rgba: (0.25, 0.25, 0.25, 1) if self.state == 'down' else (0.18, 0.18, 0.18, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+        Color:
+            rgba: 0.3, 0.3, 0.3, 1
+        Line:
+            points: [self.x, self.y, self.x + self.width, self.y]
+            width: 1
+
+    Label:
+        text: root.text
+        font_name: 'Japanese'
+        color: 1, 1, 1, 1
+        font_size: '16sp'
+        text_size: self.width, None
+        size_hint_y: None
+        height: self.texture_size[1]
+        bold: True
+    
+    Label:
+        text: root.secondary_text
+        font_name: 'Japanese'
+        color: 0.7, 0.7, 0.7, 1
+        font_size: '12sp'
+        text_size: self.width, None
+        size_hint_y: None
+        height: self.texture_size[1]
+
+<VideoItem@ButtonBehavior+BoxLayout>:
+    text: ''
+    secondary_text: ''
+    url: ''
+    orientation: 'vertical'
+    size_hint_y: None
+    height: dp(85)
+    padding: dp(12)
+    on_release: app.open_link(self.url)
+    canvas.before:
+        Color:
+            rgba: (0.22, 0.22, 0.22, 1) if self.state == 'down' else (0.15, 0.15, 0.15, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+        Color:
+            rgba: 0.25, 0.25, 0.25, 1
+        Line:
+            points: [self.x, self.y, self.x + self.width, self.y]
+            width: 1
+
+    Label:
+        text: root.text
+        font_name: 'Japanese'
+        color: 1, 1, 1, 1
+        font_size: '14sp'
+        text_size: self.width, None
+        size_hint_y: None
+        height: self.texture_size[1]
+        max_lines: 2
+        shorten: True
+        shorten_from: 'right'
+    
+    Label:
+        text: root.secondary_text
+        font_name: 'Japanese'
+        color: 0.6, 0.6, 0.6, 1
+        font_size: '11sp'
+        text_size: self.width, None
+        size_hint_y: None
+        height: self.texture_size[1]
+
+<MemberListScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        RecycleView:
+            id: member_list
+            viewclass: 'MemberItem'
+            RecycleBoxLayout:
+                default_size: None, dp(60)
+                default_size_hint: 1, None
+                size_hint_y: None
+                height: self.minimum_height
+                orientation: 'vertical'
+                spacing: dp(1)
+
+<VideoListScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        RecycleView:
+            id: video_list
+            viewclass: 'VideoItem'
+            RecycleBoxLayout:
+                default_size: None, dp(80)
+                default_size_hint: 1, None
+                size_hint_y: None
+                height: self.minimum_height
+                orientation: 'vertical'
+                spacing: dp(1)
+
+BoxLayout:
+    orientation: 'vertical'
+    canvas.before:
+        Color:
+            rgba: 0.1, 0.1, 0.1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    
+    ScreenManager:
+        id: screen_manager
+        MemberListScreen:
+            name: 'members'
+        VideoListScreen:
+            name: 'videos'
+
+    BoxLayout:
+        size_hint_y: None
+        height: dp(55)
+        canvas.before:
+            Color:
+                rgba: 0.2, 0.2, 0.2, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        
+        Button:
+            text: 'Members'
+            background_color: (0.3, 0.3, 0.3, 1) if screen_manager.current == 'members' else (0.2, 0.2, 0.2, 1)
+            on_release: screen_manager.current = 'members'
+        Button:
+            text: 'Videos'
+            background_color: (0.3, 0.3, 0.3, 1) if screen_manager.current == 'videos' else (0.2, 0.2, 0.2, 1)
+            on_release: screen_manager.current = 'videos'

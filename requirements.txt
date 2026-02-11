@@ -1,0 +1,9 @@
+requests
+beautifulsoup4
+feedparser
+aiohttp
+PySide6
+pyinstaller
+kivy
+python-dateutil
+python-dateutil
